@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIELIT Imphal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #2d2d2d;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    
+    .header {
+      background: #ffffff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header .logo img {
+      height: 90px;
+      transition: transform 0.3s ease;
+    }
+
+    .header .logo img:hover {
+      transform: scale(1.1);
+    }
+
+    .header .title img {
+      height: 100px; /* Set height to 100px as requested */
+      transition: transform 0.3s ease;
+    }
+
+    .header .title img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Navigation */
+    .navbar {
+      background: linear-gradient(90deg, #0905d8 0%, #0905d8 100%);
+      padding: 15px 30px;
+      text-align: center;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar a, .navbar .dropdown > button {
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      display: block;
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar a:hover, .navbar .dropdown > button:hover {
+      background: #0905d8;
+      transform: translateY(-2px);
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      min-width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      z-index: 1;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: #004d40;
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+      background: #e0f2f1;
+      color: #00695c;
+    }
+
+    /* Banner */
+    .banner {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.8);
+      transition: transform 0.5s ease;
+    }
+
+    .banner:hover img {
+      transform: scale(1.05);
+    }
+
+    .banner::after {
+      content: 'Welcome to NIELIT Imphal';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 48px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1300px;
+      margin: 30px auto;
+      padding: 0 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .left-column, .right-column {
+      flex: 1 1 300px;
+    }
+
+    .left-column {
+      flex: 2 1 700px;
+    }
+
+    /* About Section */
+    .about {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .about:hover {
+      transform: translateY(-5px);
+    }
+
+    .about h2 {
+      color: #004d40;
+      font-size: 28px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .about h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #26a69a;
+    }
+
+    .about img {
+      width: 100%;
+      max-width: 350px;
+      float: left;
+      margin-right: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .about img:hover {
+      transform: scale(1.05);
+    }
+
+    .about p {
+      text-align: justify;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .read-more {
+      color: #00695c;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .read-more:hover {
+      color: #26a69a;
+      text-decoration: underline;
+    }
+
+    /* Notice Section */
+    .notice {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .notice:hover {
+      transform: translateY(-5px);
+    }
+
+    .notice h2 {
+      color: #004d40;
+      font-size: 28px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .notice h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #26a69a;
+    }
+
+    .notice ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .notice li {
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #e0f2f1;
+      transition: background 0.3s ease;
+    }
+
+    .notice li:hover {
+      background: #f1f8f7;
+    }
+
+    .notice-date {
+      background: #ffca28;
+      color: #3e2723;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 20px;
+      white-space: nowrap;
+    }
+
+    .notice-text a {
+      color: #d81b60;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .notice-text a:hover {
+      color: #ad1457;
+      text-decoration: underline;
+    }
+
+    /* Accreditation */
+    .accreditation {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      margin-top: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .accreditation:hover {
+      transform: translateY(-5px);
+    }
+
+    .accreditation h2 {
+      color: #004d40;
+      font-size: 28px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .accreditation h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #26a69a;
+    }
+
+    /* Links and Contact */
+    .links, .contact {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .links:hover, .contact:hover {
+      transform: translateY(-5px);
+    }
+
+    .links h3, .contact h3 {
+      color: #004d40;
+      font-size: 24px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .links h3::after, .contact h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #26a69a;
+    }
+
+    .links ol {
+      padding-left: 20px;
+    }
+
+    .links li {
+      margin-bottom: 15px;
+    }
+
+    .links a {
+      color: #d81b60;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .links a:hover {
+      color: #ad1457;
+      text-decoration: underline;
+    }
+
+    .contact p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .social-icons img {
+      width: 40px;
+      height: 40px;
+      margin-right: 15px;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.2);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .contact-form:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-form h3 {
+      color: #004d40;
+      font-size: 24px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .contact-form h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #26a69a;
+    }
+
+    .inline-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      text-align: right;
+      color: #004d40;
+    }
+
+    .form-group input, .form-group textarea {
+      padding: 12px;
+      border: 1px solid #b0bec5;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 16px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: #26a69a;
+      box-shadow: 0 0 8px rgba(38, 166, 154, 0.3);
+      outline: none;
+    }
+
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      background: linear-gradient(90deg, #00695c 0%, #26a69a 100%);
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 180px;
+      margin-left: 165px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(38, 166, 154, 0.4);
+    }
+
+    
+    .footer {
+      background: linear-gradient(90deg, #004d40 0%, #00251a 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #26a69a, #80deea);
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .header .title img {
+        height: 80px; /* Adjusted for smaller screens */
+        margin: 0 auto;
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .main-content {
+        flex-direction: column;
+        padding: 0 20px;
+      }
+
+      .about img {
+        float: none;
+        margin: 0 auto 20px;
+        display: block;
+        max-width: 100%;
+      }
+
+      .form-group {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+
+      .form-group label {
+        text-align: left;
+      }
+
+      .submit-button {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .banner::after {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="header">
+      <img src="Nielit banner.png" alt="NIELIT Title Logo">
+    </div>
+  </div>
+
+  
+  <nav class="navbar">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li class="dropdown">
+        <button>About Us</button>
+        <div class="dropdown-content">
+          <a href="#">Introduction</a>
+          <a href="#">Executive Director's Desk</a>
+          <a href="#">Vision</a>
+          <a href="#">Mission</a>
+          <a href="#">Acts & Rules</a>
+          <a href="#">Policies & Guidelines</a>
+          <a href="#">Organization Structure</a>
+          <a href="#">Recognition</a>
+          <a href="#">Institution</a>
+          <a href="#">NIELIT Society</a>
+          <a href="#">NIELIT Scheme</a>
+          <a href="#">Disclaimer</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <button>Faculty & Staff</button>
+        <div class="dropdown-content">
+          <a href="#">Teaching</a>
+          <a href="#">Non-Teaching</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <button>Administration</button>
+        <div class="dropdown-content">
+          <a href="#">Principal</a>
+          <a href="#">Office</a>
+          <a href="#">Organizational Structure</a>
+          <a href="#">Governing Council</a>
+          <a href="#">Finance & Account Committee</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <button>Academic</button>
+        <div class="dropdown-content">
+          <a href="#">Courses Offered</a>
+          <a href="#">Results</a>
+          <a href="#">Admission</a>
+          <a href="#">Non-Formal Courses</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <button>Services</button>
+        <div class="dropdown-content">
+          <a href="#">Online Services</a>
+          <a href="#">Activities</a>
+          <a href="#">Infrastructure</a>
+          <a href="#">CyberSecurity Awareness Programme</a>
+        </div>
+      </li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">Download Doc</a></li>
+      <li><a href="#notice">Notice</a></li>
+      <li><a href="#">Recruitment</a></li>
+      <li><a href="#">Tenders/EoI</a></li>
+      <li class="dropdown">
+        <button>Contact Us</button>
+        <div class="dropdown-content">
+          <a href="#">NIELIT Imphal Contact Details</a>
+          <a href="#">Right To Information</a>
+          <a href="#">Grievances Redress</a>
+          <a href="#">Vigilance Officer</a>
+          <a href="#">Kakching</a>
+        </div>
+      </li>
+      <li><a href="#">NIELIT HQ</a></li>
+      <li><a href="#">AICTE Approval</a></li>
+    </ul>
+  </nav>
+
+  
+  <div class="banner">
+    <img src="Nielit foto.jpeg" alt="NIELIT Banner">
+  </div>
+
+  
+  <div class="main-content">
+    
+    <div class="left-column">
+      <div class="about">
+        <h2>About NIELIT Imphal</h2>
+        <img src="campus.png" alt="NIELIT Campus">
+        <p>NIELIT Imphal, established in 1989 under the Ministry of Electronics and Information Technology, Government of India, is a premier technical institute located at Akampat, about 5 km from Imphal city. Spread over 20 acres, the campus houses modern infrastructure, including smart classrooms, computer and electronics labs, a digital library, seminar halls, mechanical workshops, hostels, and recreational facilities.</p>
+        <p>The institute offers formal courses such as Diploma in Electronics and Communication Engineering (ECE), Diploma in Computer Science and Engineering (CSE), BCA, MCA, and MSc IT, affiliated with Manipur University. Non-formal courses include NIELIT ‘O’ Level, and certifications in AI, Big Data, Cyber Security, Cloud Computing, and more. NIELIT Imphal promotes digital literacy, skill development, and provides scholarships for SC/ST/PH/female students, contributing to the technological growth of Northeast India. <a href="https://www.nielit.gov.in/imphal/content/introduction-39" class="read-more">Read More</a></p>
+      </div>
+      <div class="accreditation">
+        <h2>Accreditation</h2>
+        <p>National Assessment and Accreditation Council (NAAC), Bangalore, accredited NIELIT Imphal with a B+ grade on 10th February 2007, making it the first institute in Manipur assessed by NAAC before its 4th year. In the 2nd Cycle of Accreditation, NAAC awarded a B Grade on June 25, 2015.</p>
+      </div>
+    </div>
+    
+    <div class="right-column">
+      <div class="notice" id="notice">
+        <h2>Notice</h2>
+        <ul>
+          <li>
+            <span class="notice-date">05 Dec, 2025</span>
+            <span class="notice-text"><a href="#">MCA Admission 2025</a></span>
+          </li>
+          <li>
+            <span class="notice-date">05 Jun, 2025</span>
+            <span class="notice-text"><a href="#">BCA Entrance Exam, 2025</a></span>
+          </li>
+          <li>
+            <span class="notice-date">27 Jul, 2025</span>
+            <span class="notice-text"><a href="#">BCA Admission Notice, 13 July, 2025</a></span>
+          </li>
+          <li>
+            <span class="notice-date">04 May, 2025</span>
+            <span class="notice-text"><a href="#">Diploma Admission Notice, 04 May 2025</a></span>
+          </li>
+          <li>
+            <span class="notice-date">18 Apr, 2024</span>
+            <span class="notice-text"><a href="#">Employment Notice, 06 April 2023</a></span>
+          </li>
+          <li>
+            <span class="notice-date">26 Jul, 2019</span>
+            <span class="notice-text"><a href="#">Capturing of Fingerprints or Bio-Metric Attendance</a></span>
+          </li>
+        </ul>
+      </div>
+      <div class="links">
+        <h3>Important Links</h3>
+        <ol>
+          <li><a href="https://nielit.gov.in/">NIELIT Main Website</a></li>
+          <li><a href="https://www.manipuruniv.ac.in/">Manipur University</a></li>
+          <li><a href="https://www.mygov.in/">MyGov.in</a></li>
+        </ol>
+        <h3>Other Institutions</h3>
+        <ol>
+          <li><a href="https://nielit.gov.in/delhi/">NIELIT, Delhi</a></li>
+          <li><a href="https://nielit.gov.in/guwahati/">NIELIT, Guwahati</a></li>
+          <li><a href="https://nielit.gov.in/chennai/">NIELIT, Chennai</a></li>
+          <li><a href="#">NIELIT Agartala (Tripura)</a></li>
+          <li><a href="#">NIELIT Gangtok (Sikkim)</a></li>
+        </ol>
+      </div>
+      <div class="contact" id="contact">
+        <h3>Contact Address</h3>
+        <p><strong>NIELIT Imphal</strong></p>
+        <p>Akampat, P.O. Box-104, Imphal, Manipur-795001</p>
+        <p><strong>Email:</strong> dir-imphal@nielit.gov.in</p>
+        <p><strong>Telephone:</strong> (0385) 2454109</p>
+        <p><strong>Connect with Us:</strong></p>
+        <div class="social-icons">
+          <a href="#"><img src="facebook logo.jpeg" alt="Facebook"></a>
+          <a href="#"><img src="google.jpeg" alt="Google+"></a>
+          <a href="#"><img src="youtube logo.jpeg" alt="YouTube"></a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Contact Form</h3>
+        <form class="inline-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="contact">Contact No.</label>
+            <input type="text" id="contact" name="contact" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="submit-button">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="footer">
+    © 2025 NIELIT Imphal. All Rights Reserved. Designed by Samerjit Laishram
+  </div>
+</body>
+</html>
